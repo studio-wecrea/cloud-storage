@@ -1,5 +1,5 @@
 {
-  "name": "cloud-storage",
+  "name": "wecrea/cloud-storage",
   "version": "1.0.0",
   "description": "Simple library to store data on ObjectStorage (OpenStack Swift / S3) and in ColdStorage (C14 / SFTP)",
   "main": "index.js",
