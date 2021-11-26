@@ -1,7 +1,7 @@
 {
   "name": "cloud-storage",
   "version": "1.0.0",
-  "description": "Simple library to store data on ObjectStorage and in ColdStorage (C14 / SFTP)",
+  "description": "Simple library to store data on ObjectStorage (OpenStack Swift / S3) and in ColdStorage (C14 / SFTP)",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wecrea/cloud-storage.git"
+    "url": "git+https://github.com/studio-wecrea/cloud-storage.git"
   },
   "keywords": [
     "ovh",
@@ -34,7 +34,7 @@
   "author": "Studio Wecrea",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wecrea/cloud-storage/issues"
+    "url": "https://github.com/studio-wecrea/cloud-storage/issues"
   },
-  "homepage": "https://github.com/wecrea/cloud-storage#readme"
+  "homepage": "https://github.com/studio-wecrea/cloud-storage#readme"
 }
