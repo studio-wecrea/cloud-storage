@@ -1,0 +1,16 @@
+# Editors directories
+.idea
+.vscode
+
+# NodeJS modules
+node_modules
+
+# Package Lock file
+package-lock.json
+
+# Tests and Logs
+test
+tests
+logs
+*.log
+npm-debug.log*

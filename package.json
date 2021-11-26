@@ -1,0 +1,40 @@
+{
+  "name": "cloud-storage",
+  "version": "1.0.0",
+  "description": "Simple library to store data on ObjectStorage and in ColdStorage (C14 / SFTP)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wecrea/cloud-storage.git"
+  },
+  "keywords": [
+    "ovh",
+    "scaleway",
+    "amazonaws",
+    "aws",
+    "object",
+    "storage",
+    "nodejs",
+    "node",
+    "openstack",
+    "c14",
+    "sftp"
+  ],
+  "dependencies": {
+    "moment": "^2.29.1",
+    "node-fetch": "^3.0.0"
+  },
+  "author": "Studio Wecrea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wecrea/cloud-storage/issues"
+  },
+  "homepage": "https://github.com/wecrea/cloud-storage#readme"
+}
