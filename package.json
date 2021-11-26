@@ -1,5 +1,5 @@
 {
-  "name": "wecrea/cloud-storage",
+  "name": "@wecrea/cloud-storage",
   "version": "1.0.0",
   "description": "Simple library to store data on ObjectStorage (OpenStack Swift / S3) and in ColdStorage (C14 / SFTP)",
   "main": "index.js",
@@ -31,10 +31,11 @@
     "moment": "^2.29.1",
     "node-fetch": "^3.0.0"
   },
-  "author": "Studio Wecrea",
+  "author": "Florian DUPUIS <florian@wecrea.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/studio-wecrea/cloud-storage/issues"
   },
-  "homepage": "https://github.com/studio-wecrea/cloud-storage#readme"
+  "homepage": "https://github.com/studio-wecrea/cloud-storage#readme",
+  "devDependencies": {}
 }
