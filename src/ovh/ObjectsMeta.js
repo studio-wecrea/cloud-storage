@@ -173,7 +173,7 @@ export default class ObjectsMeta {
 
   has(key) {
     this.verifyKey(key);
-    const headerName = makeHeaderMetaName(key);
+    const headerName = this.makeHeaderMetaName(key);
     const headersFound = Object.entries(this.headers).filter((header) => {
       return header[0] === headerName;
     });
