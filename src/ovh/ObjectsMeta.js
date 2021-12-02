@@ -164,6 +164,7 @@ export default class ObjectsMeta {
       return defaultValue;
     }
 
+    const headerName = this.makeHeaderMetaName(key);
     const headersFound = Object.entries(this.headers).filter((header) => {
       return header[0] === headerName;
     });
