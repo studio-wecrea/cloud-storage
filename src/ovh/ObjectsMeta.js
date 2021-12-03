@@ -83,13 +83,13 @@ export default class ObjectsMeta {
     if (Tools.isUndefined(metas)) {
       throw new OvhError("Metas parameter is expected.");
     }
-    if (Tools.isObject(metas)) {
-      throw new OvhError("Metas parameter must be an object.");
+    if (Array.isArray(metas)) {
+      throw new OvhError("Metas parameter must be an array.");
     }
 
     let headersToSend = this.saveCurrentHeaders();
 
-    Object.entries(metas).forEach(([key, value]) => {
+    metas.forEach(([key, value]) => {
       this.verifyKey(key);
       this.verifyValue(value);
       const headerName = this.makeHeaderMetaName(key);
