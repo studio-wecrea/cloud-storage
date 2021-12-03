@@ -83,7 +83,7 @@ export default class ObjectsMeta {
     if (Tools.isUndefined(metas)) {
       throw new OvhError("Metas parameter is expected.");
     }
-    if (Array.isArray(metas)) {
+    if (!Array.isArray(metas)) {
       throw new OvhError("Metas parameter must be an array.");
     }
 
