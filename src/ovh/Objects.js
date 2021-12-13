@@ -109,8 +109,7 @@ export default class Objects {
 
     const req = new HttpRequest(this.context);
     const response = await req.get("/" + this.container + "/" + this.object);
-    await response.body.pipe(out);
-    return response.headers.raw();
+    return response.body.pipe(out);
   }
 
   async exist() {
