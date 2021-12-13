@@ -89,11 +89,11 @@ export default class ObjectsMeta {
 
     let headersToSend = this.saveCurrentHeaders();
 
-    metas.forEach(([key, value]) => {
-      this.verifyKey(key);
-      this.verifyValue(value);
-      const headerName = this.makeHeaderMetaName(key);
-      headersToSend[headerName] = value;
+    metas.forEach((meta) => {
+      this.verifyKey(meta.key);
+      this.verifyValue(meta.value);
+      const headerName = this.makeHeaderMetaName(meta.key);
+      headersToSend[headerName] = meta.value;
     });
 
     let req = new HttpRequest(this.context);
