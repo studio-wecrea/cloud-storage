@@ -167,7 +167,7 @@ export default class Containers {
     let deleteResult = [];
 
     if (files === null) {
-      const files = await this.list();
+      files = await this.list();
     }
 
     if (!Array.isArray(files)) {
@@ -180,9 +180,7 @@ export default class Containers {
 
     if (files.length > 0) {
       files.forEach(async (file) => {
-        let deleteFileResult = await this.context
-          .objects()
-          .delete(this.container + "/" + file);
+        let deleteFileResult = await this.objects().use(file).delete();
         deleteResult.push(deleteFileResult);
       });
     }
