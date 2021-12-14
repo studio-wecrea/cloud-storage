@@ -54,19 +54,14 @@ export default class Objects {
     }
   }
 
-  async upload(localFilename, distantFilename) {
+  async upload(localFilename, distantFilename, headers = {}) {
     this.object = this.verifyObjectName(distantFilename);
     const path = this.localPath + "/" + localFilename;
-
-    const stats = fs.statSync(path);
-    const fileSizeInBytes = stats.size;
 
     let stream = fs.createReadStream(path);
 
     const req = new HttpRequest(this.context);
-    req.addHeaders({
-      "Content-length": fileSizeInBytes,
-    });
+    req.addHeaders(headers);
 
     const response = await req.uploadStream(
       "/" + this.container + "/" + this.object,
@@ -107,8 +102,17 @@ export default class Objects {
       );
     }
 
+    const headers = await this.info();
+
     const req = new HttpRequest(this.context);
     const response = await req.get("/" + this.container + "/" + this.object);
+
+    const originalFilename = headers["x-object-meta-filename"] || "ziplo-file";
+    out.set({
+      "Content-Type": headers["x-object-meta-mime"],
+      "Content-Length": headers["content-length"],
+      "Content-Disposition": "attachment; filename=" + originalFilename,
+    });
     return response.body.pipe(out);
   }
 
