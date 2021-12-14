@@ -99,7 +99,7 @@ export default class Objects {
       const destination = fs.createWriteStream(finalPath + "/" + filename);
       response.body.pipe(destination);
       response.body.on("end", () => resolve(response.headers.raw()));
-      destination.on("error", reject("Can not download properly"));
+      destination.on("error", reject);
     });
   }
 
