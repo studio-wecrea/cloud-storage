@@ -79,7 +79,6 @@ export default class HttpRequest {
 
   async call(method, path, data) {
     this.addHeaders({
-      "Content-Type": "application/json",
       Accept: "application/json",
     });
 
