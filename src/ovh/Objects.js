@@ -115,10 +115,11 @@ export default class Objects {
     const req = new HttpRequest(this.context);
     const response = await req.get("/" + this.container + "/" + this.object);
 
-    const originalFilename = headers["x-object-meta-filename"] || "ziplo-file";
+    const originalFilename =
+      headers["x-object-meta-filename"][0] || "ziplo-file";
     out.set({
-      "Content-Type": headers["x-object-meta-mime"],
-      "Content-Length": headers["content-length"],
+      "Content-Type": headers["x-object-meta-mime"][0],
+      "Content-Length": headers["content-length"][0],
       "Content-Disposition": "attachment; filename=" + originalFilename,
     });
     return response.body.pipe(out);
