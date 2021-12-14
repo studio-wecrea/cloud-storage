@@ -93,10 +93,14 @@ export default class Objects {
         headers["x-object-meta-filename"] || "ziplo-" + Tools.randomString(6);
     }
 
-    const req = new HttpRequest(this.context);
-    const response = await req.get("/" + this.container + "/" + this.object);
-    await response.body.pipe(fs.createWriteStream(finalPath + "/" + filename));
-    return response.headers.raw();
+    return new Promise(async (resolve, reject) => {
+      const req = new HttpRequest(this.context);
+      const response = await req.get("/" + this.container + "/" + this.object);
+      const destination = fs.createWriteStream(finalPath + "/" + filename);
+      response.body.pipe(destination);
+      response.body.on("end", () => resolve(response.headers.raw()));
+      destination.on("error", reject("Can not download properly"));
+    });
   }
 
   async downloadStream(out) {
