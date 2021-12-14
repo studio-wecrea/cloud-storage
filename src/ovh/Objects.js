@@ -72,7 +72,7 @@ export default class Objects {
     return response.headers.raw();
   }
 
-  async download(path) {
+  async download(path, filename = null) {
     if (!this.exist()) {
       throw new OvhError(
         `Object ${this.object} does not exist in container ${this.container}`
@@ -82,16 +82,20 @@ export default class Objects {
     const finalPath = this.localPath + path;
 
     // Test if path exist to store the file
-    let testPath = finalPath.split("/");
-    testPath.pop(); // without filename because it does not exist at this moment ^^
-    testPath = testPath.join("/");
-    if (!fs.existsSync(testPath)) {
+    if (!fs.existsSync(finalPath)) {
       throw new OvhError(`Object.download : Path ${testPath} does not exist.`);
+    }
+
+    if (filename === null) {
+      // Retrieve filename from OpenStack
+      const headers = await this.info();
+      filename =
+        headers["x-object-meta-filename"] || "ziplo-" + Tools.randomString(6);
     }
 
     const req = new HttpRequest(this.context);
     const response = await req.get("/" + this.container + "/" + this.object);
-    await response.body.pipe(fs.createWriteStream(finalPath));
+    await response.body.pipe(fs.createWriteStream(finalPath + "/" + filename));
     return response.headers.raw();
   }
 

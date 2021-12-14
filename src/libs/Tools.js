@@ -84,6 +84,18 @@ export function toSlug(str) {
   return str;
 }
 
+export function randomString(length) {
+  var randomChars =
+    "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz123456789";
+  var result = "";
+  for (var i = 0; i < length; i++) {
+    result += randomChars.charAt(
+      Math.floor(Math.random() * randomChars.length)
+    );
+  }
+  return result;
+}
+
 export default {
   isUndefined,
   isEmpty,
@@ -93,4 +105,5 @@ export default {
   findInObject,
   contains,
   toSlug,
+  randomString,
 };
