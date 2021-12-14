@@ -35,6 +35,9 @@ export default class OvhStorage {
         },
       },
     };
+    req.addHeaders({
+      "Content-Type": "application/json",
+    });
     let response = await req.post("/tokens", authData);
     const body = await response.json();
 
